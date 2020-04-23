@@ -1,0 +1,26 @@
+public class MaxSubArraySum {
+
+    private static int returnMaxSubArraySum(int[] arr) {
+      /*
+        largest sum contiguous subarray
+        Algo - dynamic programming 
+        complexity - O(n)
+      */
+
+        int maxSoFar = 0;
+        int maxTillThisPoint = 0;
+        for (int value : arr) {
+            maxTillThisPoint += value;
+
+            if (maxTillThisPoint < 0) maxTillThisPoint = 0;
+            else if (maxTillThisPoint > maxSoFar) maxSoFar = maxTillThisPoint;
+        }
+        return maxSoFar;
+    }
+
+    public static void main(String[] args) {
+        int [] a = {-2, -3, 4, -1, -2, 1, 5, -3};
+        System.out.println("Maximum contiguous sum is " +
+                returnMaxSubArraySum(a));
+    }
+}
