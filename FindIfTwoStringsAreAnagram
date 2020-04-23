@@ -1,0 +1,26 @@
+import java.util.Arrays;
+
+public class AnagramCheck {
+
+    private static boolean checkIfStringsAreAnagram(String str1, String str2) {
+
+        if (str1.length() != str2.length()) return false;
+
+        int[] countOfCharacters = new int[256];
+        Arrays.fill(countOfCharacters, 0);
+
+        for (int i = 0; i < str1.length(); i++) {
+            countOfCharacters[str1.charAt(i)]++;
+            countOfCharacters[str2.charAt(i)]--;
+        }
+        for (int i = 0; i < 256; i++) {
+            if (countOfCharacters[i] != 0) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        boolean stringsAreAnagram = checkIfStringsAreAnagram("abba", "bbaa");
+        System.out.println(stringsAreAnagram ? "Strings are anagram" : "Strings are not Anagram");
+    }
+}
